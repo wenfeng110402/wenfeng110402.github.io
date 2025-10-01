@@ -3,161 +3,524 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我们的俱乐部 - Hack Club</title>
+    <title>rasvision</title>
     <style>
+        :root {
+          --theme-ui-colors-darker: #121217;
+          --theme-ui-colors-dark: #17171d;
+          --theme-ui-colors-darkless: #252429;
+          --theme-ui-colors-black: #1f2d3d;
+          --theme-ui-colors-steel: #273444;
+          --theme-ui-colors-slate: #3c4858;
+          --theme-ui-colors-muted: #8492a6;
+          --theme-ui-colors-smoke: #e0e6ed;
+          --theme-ui-colors-snow: #f9fafc;
+          --theme-ui-colors-white: #ffffff;
+          --theme-ui-colors-red: #ec3750;
+          --theme-ui-colors-orange: #ff8c37;
+          --theme-ui-colors-yellow: #f1c40f;
+          --theme-ui-colors-green: #33d6a6;
+          --theme-ui-colors-cyan: #5bc0de;
+          --theme-ui-colors-blue: #338eda;
+          --theme-ui-colors-purple: #a633d6;
+          --theme-ui-colors-twitter: #1da1f2;
+          --theme-ui-colors-facebook: #3b5998;
+          --theme-ui-colors-instagram: #e1306c;
+          --theme-ui-colors-text: #1f2d3d;
+          --theme-ui-colors-background: #ffffff;
+          --theme-ui-colors-elevated: #ffffff;
+          --theme-ui-colors-sheet: #f9fafc;
+          --theme-ui-colors-sunken: #e0e6ed;
+          --theme-ui-colors-border: #e0e6ed;
+          --theme-ui-colors-placeholder: #8492a6;
+          --theme-ui-colors-secondary: #3c4858;
+          --theme-ui-colors-primary: #ec3750;
+          --theme-ui-colors-accent: #338eda;
+          --breakpoint-xs: 32em;
+          --breakpoint-s: 48em;
+          --breakpoint-m: 64em;
+          --breakpoint-l: 96em;
+          --breakpoint-xl: 128em;
+          --radius: 8px;
+          --h1: 2.5rem;
+          --h2: 2rem;
+          --h3: 1.5rem;
+          --h4: 1.25rem;
+          --h5: 1rem;
+          --h6: 0.875rem;
+        }
+        
+        @media (min-width: 32em) {
+          :root {
+            --h1: 2.75rem;
+            --h2: 2.25rem;
+            --h3: 1.75rem;
+            --h4: 1.5rem;
+            --h5: 1.25rem;
+            --h6: 1rem;
+          }
+        }
+        
+        @media (min-width: 48em) {
+          :root {
+            --h1: 3rem;
+            --h2: 2.5rem;
+            --h3: 2rem;
+            --h4: 1.75rem;
+            --h5: 1.5rem;
+            --h6: 1.25rem;
+          }
+        }
+        
         body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
+          margin: 0;
+          font-family: "Phantom Sans", system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+            Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
+            sans-serif;
+          line-height: 1.5;
+          font-weight: 400;
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          color: var(--theme-ui-colors-text);
+          background-color: var(--theme-ui-colors-background);
+          background: 
+            linear-gradient(135deg, #ff9a9e 0%, #fad0c4 15%, #a6c1ee 30%, #fbc2eb 45%, #ff9a9e 60%, #fad0c4 75%, #a6c1ee 90%, #fbc2eb 100%),
+            radial-gradient(circle at 20% 80%, #ff9a9e 0%, transparent 20%),
+            radial-gradient(circle at 80% 20%, #a6c1ee 0%, transparent 20%),
+            radial-gradient(circle at 40% 40%, #fbc2eb 0%, transparent 20%),
+            radial-gradient(circle at 60% 60%, #fad0c4 0%, transparent 20%);
+          background-size: 400% 400%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+          animation: gradient 8s ease infinite;
+          min-height: 100vh;
         }
-        header {
-            background-color: #ff5555;
-            color: white;
-            text-align: center;
-            padding: 1rem;
+        
+        @keyframes gradient {
+          0% {
+            background-position: 0% 50%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+          }
+          50% {
+            background-position: 100% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+          }
+          100% {
+            background-position: 0% 50%, 0% 0%, 0% 0%, 0% 0%, 0% 0%;
+          }
         }
+        
+        a {
+          color: var(--theme-ui-colors-primary);
+          text-decoration: none;
+        }
+        
+        a:hover {
+          text-decoration: underline;
+        }
+        
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          font-weight: 500;
+          line-height: 1.25;
+          margin-top: 0;
+          margin-bottom: 0.5rem;
+        }
+        
+        h1 {
+          font-size: var(--h1);
+        }
+        
+        h2 {
+          font-size: var(--h2);
+        }
+        
+        h3 {
+          font-size: var(--h3);
+        }
+        
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            background-color: white;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
+          width: 100%;
+          margin-right: auto;
+          margin-left: auto;
+          padding-right: 1rem;
+          padding-left: 1rem;
         }
-        h1, h2, h3 {
-            color: #ff5555;
+        
+        @media (min-width: 48em) {
+          .container {
+            max-width: 48em;
+            padding-right: 2rem;
+            padding-left: 2rem;
+          }
         }
-        .logo {
-            text-align: center;
-            margin: 1rem 0;
+        
+        @media (min-width: 64em) {
+          .container {
+            max-width: 64em;
+          }
         }
-        .logo img {
-            max-width: 200px;
+        
+        .header {
+          background-color: transparent;
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          backdrop-filter: blur(10px);
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        .section {
-            margin-bottom: 2rem;
+        
+        .nav {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
-        .leaders {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+        
+        .hackclub-logo {
+          background-image: url(https://assets.hackclub.com/flag-orpheus-top.svg);
+          background-repeat: no-repeat;
+          background-position: top left;
+          background-size: contain;
+          cursor: pointer;
+          flex-shrink: 0;
+          transition: 0.1875s cubic-bezier(0.375, 0, 0.675, 1) transform;
+          transform-origin: top left;
+          width: 172px;
+          height: 64px;
+          display: block;
+          text-indent: -9999px;
+          overflow: hidden;
         }
-        .leader-card {
-            border: 1px solid #ddd;
-            padding: 1rem;
-            border-radius: 5px;
-            flex: 1;
-            min-width: 250px;
+        
+        .hackclub-logo:hover {
+          transform: scale(1.05);
         }
+        
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+        }
+        
+        .language-switch {
+          background: rgba(0, 0, 0, 0.5);
+          border: 1px solid rgba(255, 255, 255, 0.5);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: var(--radius);
+          cursor: pointer;
+          transition: all 0.3s ease;
+          font-weight: bold;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+        
+        .language-switch:hover {
+          background: rgba(0, 0, 0, 0.7);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero {
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+          text-align: center;
+          color: white;
+        }
+        
+        .hero h1 {
+          color: white;
+          margin-bottom: 1rem;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .hero p {
+          font-size: 1.25rem;
+          max-width: 36rem;
+          margin-right: auto;
+          margin-left: auto;
+          margin-bottom: 2rem;
+          text-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        
         .btn {
-            display: inline-block;
-            background-color: #ff5555;
-            color: white;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 0.5rem;
+          display: inline-block;
+          padding: 0.75rem 1.5rem;
+          background-color: white;
+          color: #1a1a2e;
+          border-radius: var(--radius);
+          font-weight: bold;
+          text-decoration: none;
+          transition: transform 0.125s ease-in-out, box-shadow 0.125s ease-in-out;
+          border: none;
+          cursor: pointer;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
+        
         .btn:hover {
-            background-color: #e04444;
+          transform: scale(1.0625);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+          text-decoration: none;
         }
+        
+        .features {
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+        }
+        
+        .features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+          gap: 2rem;
+        }
+        
+        .feature-card {
+          padding: 1.5rem;
+          background-color: rgba(255, 255, 255, 0.85);
+          border-radius: var(--radius);
+          box-shadow: 0 0.25rem 1rem rgba(0, 0, 0, 0.0625);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .feature-card h3 {
+          color: #1a1a2e;
+        }
+        
+        .section {
+          padding-top: 4rem;
+          padding-bottom: 4rem;
+        }
+        
+        .section-content {
+          background-color: rgba(255, 255, 255, 0.85);
+          border-radius: var(--radius);
+          padding: 2rem;
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .text-center {
+          text-align: center;
+        }
+        
+        .mb-4 {
+          margin-bottom: 2rem;
+        }
+        
+        .mt-4 {
+          margin-top: 2rem;
+        }
+        
         footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #333;
-            color: white;
+          background-color: rgba(18, 18, 23, 0.9);
+          color: var(--theme-ui-colors-white);
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+          text-align: center;
+          backdrop-filter: blur(10px);
         }
-        form input, form textarea {
-            width: 100%;
-            padding: 0.5rem;
-            margin: 0.5rem 0;
-            border: 1px solid #ddd;
-            border-radius: 3px;
+        
+        footer a {
+          color: var(--theme-ui-colors-white);
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 1rem;
-            }
+        
+        .email-link {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #1a1a2e;
+        }
+        
+        .email-link a {
+          color: #1a1a2e;
+        }
+        
+        .organizer {
+          font-family: 'Brush Script MT', cursive;
+          font-size: 2rem;
+          color: var(--theme-ui-colors-primary);
+          text-align: center;
+          margin: 2rem 0;
+          text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        /* English version styles */
+        .en-version {
+          direction: ltr;
+        }
+        
+        .en-version .hero h1 {
+          font-size: 2.5rem;
+        }
+        
+        .en-version .hero p {
+          font-size: 1.25rem;
+        }
+        
+        /* About page styles */
+        .about-content {
+          max-width: 800px;
+          margin: 0 auto;
+          padding: 2rem;
+          background-color: rgba(255, 255, 255, 0.85);
+          border-radius: var(--radius);
+          backdrop-filter: blur(10px);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hidden {
+          display: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>黑客俱乐部</h1>
-        <p>创造、学习和分享技术的社区</p>
+    <header class="header">
+        <div class="container nav">
+            <a href="https://www.hackclub.com" class="hackclub-logo" target="_blank">rasvision</a>
+            <div class="nav-links">
+                <a href="#about" id="aboutLink">关于</a>
+                <select class="language-switch" id="languageSwitch">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
     </header>
 
-    <div class="container">
-        <div class="logo">
-            <svg width="200" height="200" viewBox="0 0 200 200">
-                <circle cx="100" cy="100" r="90" fill="#ff5555" />
-                <circle cx="70" cy="80" r="15" fill="white" />
-                <circle cx="130" cy="80" r="15" fill="white" />
-                <path d="M 60 130 Q 100 160 140 130" stroke="white" stroke-width="10" fill="none" />
-            </svg>
-            <p>我们的俱乐部标志</p>
-        </div>
+    <main id="mainContent">
+        <section class="hero">
+            <div class="container">
+                <h1>rasvision</h1>
+                <p>一个为青少年编程爱好者打造的社区，在这里你可以学习、创造和分享技术项目</p>
+                <a href="#join" class="btn">加入我们</a>
+            </div>
+        </section>
 
-        <div class="section">
-            <h2>关于我们</h2>
-            <p>欢迎来到我们的黑客俱乐部！我们是一个致力于创造、学习和分享技术知识的学生社区。无论你是编程新手还是经验丰富的开发者，我们都欢迎你的加入。我们定期举办编程工作坊、黑客马拉松和项目展示活动，帮助成员们发展技术技能并建立有意义的联系。</p>
-        </div>
-
-        <div class="section">
-            <h2>会议信息</h2>
-            <p><strong>地点：</strong>学校图书馆三楼计算机实验室</p>
-            <p><strong>时间：</strong>每周三下午 4:00 - 6:00</p>
-        </div>
-
-        <div class="section">
-            <h2>俱乐部领导者</h2>
-            <div class="leaders">
-                <div class="leader-card">
-                    <h3>张三</h3>
-                    <p>俱乐部主席</p>
-                    <p>负责组织会议和活动，有5年编程经验。</p>
+        <section class="features">
+            <div class="container">
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>🌐 连接全球</h3>
+                        <p>与来自世界各地的编程爱好者交流，分享你的项目并获得反馈</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🛠 构建项目</h3>
+                        <p>参与开源项目开发，提升你的技术技能并为社区做贡献</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>👥 线下聚会</h3>
+                        <p>参加本地的黑客俱乐部聚会和高中编程马拉松活动</p>
+                    </div>
                 </div>
-                <div class="leader-card">
-                    <h3>李四</h3>
-                    <p>技术主管</p>
-                    <p>Web开发专家，负责技术工作坊和项目指导。</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-content text-center mb-4">
+                    <h2>rasvision活动</h2>
+                    <p>每周三下午 4:00 - 6:00 在学校图书馆三楼计算机实验室举行</p>
+                </div>
+                
+                <div class="text-center">
+                    <a href="https://github.com/wenfeng110402" class="btn" target="_blank">访问 GitHub 主页</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="join" class="section">
+            <div class="container">
+                <div class="section-content text-center mb-4">
+                    <h2>成为rasvision成员</h2>
+                    <p>请联系以下邮箱获取更多信息</p>
+                    <p class="email-link">📧 <a href="mailto:wenfeng110402@icloud.com">wenfeng110402@icloud.com</a></p>
+                </div>
+            </div>
+        </section>
+        
+        <div class="organizer">组织者: wenfeng110402</div>
+    </main>
+
+    <section id="about" class="section hidden">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="text-center">关于我们</h2>
+                <p>rasvision是一个位于中国广东的技术社区，致力于使用树莓派进行图像识别项目的开发。</p>
+                <p>我们的团队专注于探索计算机视觉技术，并通过实际项目帮助成员掌握相关技能。</p>
+                <p>我们相信通过动手实践和团队合作，可以让更多人了解和掌握前沿技术。</p>
+                
+                <div class="text-center mt-4">
+                    <button class="btn" id="backButton">返回主页</button>
                 </div>
             </div>
         </div>
-
-        <div class="section">
-            <h2>如何加入</h2>
-            <p>要加入我们的俱乐部，请填写以下表格：</p>
-            <form>
-                <label for="name">姓名:</label>
-                <input type="text" id="name" name="name" required>
-
-                <label for="email">邮箱:</label>
-                <input type="email" id="email" name="email" required>
-
-                <label for="grade">年级:</label>
-                <input type="text" id="grade" name="grade" required>
-
-                <label for="experience">编程经验:</label>
-                <textarea id="experience" name="experience" rows="4"></textarea>
-
-                <button type="submit" class="btn">提交申请</button>
-            </form>
-            <p>或者通过 <a href="https://hackclub.com/slack/" target="_blank">Hack Club Slack</a> 联系我们</p>
-        </div>
-
-        <div class="section">
-            <h2>有用的链接</h2>
-            <p><a href="https://hackclub.com/dashboard/" class="btn" target="_blank">访问 Hack Club 仪表板</a></p>
-            <p><a href="https://hackclub.com/" class="btn" target="_blank">访问 Hack Club 官网</a></p>
-        </div>
-    </div>
+    </section>
 
     <footer>
-        <p>&copy; 2025 黑客俱乐部. 与 Hack Club 合作.</p>
+        <div class="container">
+            <p>&copy; 2025 rasvision. 与 <a href="https://hackclub.com" target="_blank">Hack Club</a> 合作.</p>
+        </div>
     </footer>
+
+    <script>
+        // Toggle between main content and about page
+        document.getElementById('aboutLink').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('mainContent').classList.add('hidden');
+            document.getElementById('about').classList.remove('hidden');
+        });
+        
+        document.getElementById('backButton').addEventListener('click', function() {
+            document.getElementById('mainContent').classList.remove('hidden');
+            document.getElementById('about').classList.add('hidden');
+        });
+        
+        // Language switch functionality
+        document.getElementById('languageSwitch').addEventListener('change', function() {
+            const lang = this.value;
+            if (lang === 'en') {
+                // Switch to English version
+                document.documentElement.lang = 'en';
+                document.querySelector('title').textContent = 'rasvision';
+                document.querySelector('.hero h1').textContent = 'rasvision';
+                document.querySelector('.hero p').textContent = 'A community for teenage coding enthusiasts where you can learn, create, and share tech projects';
+                document.querySelector('.hero .btn').textContent = 'Join Us';
+                document.querySelector('h2:nth-of-type(1)').textContent = 'rasvision Activities';
+                document.querySelector('h2:nth-of-type(1) + p').textContent = 'Held every Wednesday from 4:00 PM to 6:00 PM in the 3rd floor computer lab of the school library';
+                document.querySelector('h2:nth-of-type(2)').textContent = 'Become a rasvision Member';
+                document.querySelector('h2:nth-of-type(2) + p').textContent = 'Please contact the following email for more information';
+                document.querySelector('.email-link a').textContent = 'wenfeng110402@icloud.com';
+                document.querySelector('.organizer').textContent = 'Organizer: wenfeng110402';
+                document.querySelector('#aboutLink').textContent = 'About';
+                document.querySelector('#about h2').textContent = 'About Us';
+                document.querySelector('#about p:nth-of-type(1)').textContent = 'rasvision is a technical community based in Guangdong, China, dedicated to developing image recognition projects using Raspberry Pi.';
+                document.querySelector('#about p:nth-of-type(2)').textContent = 'Our team focuses on exploring computer vision technology and helping members master relevant skills through practical projects.';
+                document.querySelector('#about p:nth-of-type(3)').textContent = 'We believe that hands-on practice and teamwork can help more people understand and master cutting-edge technologies.';
+                document.querySelector('#backButton').textContent = 'Back to Home';
+                document.body.classList.add('en-version');
+            } else {
+                // Switch to Chinese version
+                document.documentElement.lang = 'zh';
+                document.querySelector('title').textContent = 'rasvision';
+                document.querySelector('.hero h1').textContent = 'rasvision';
+                document.querySelector('.hero p').textContent = '一个为青少年编程爱好者打造的社区，在这里你可以学习、创造和分享技术项目';
+                document.querySelector('.hero .btn').textContent = '加入我们';
+                document.querySelector('h2:nth-of-type(1)').textContent = 'rasvision活动';
+                document.querySelector('h2:nth-of-type(1) + p').textContent = '每周三下午 4:00 - 6:00 在学校图书馆三楼计算机实验室举行';
+                document.querySelector('h2:nth-of-type(2)').textContent = '成为rasvision成员';
+                document.querySelector('h2:nth-of-type(2) + p').textContent = '请联系以下邮箱获取更多信息';
+                document.querySelector('.email-link a').textContent = 'wenfeng110402@icloud.com';
+                document.querySelector('.organizer').textContent = '组织者: wenfeng110402';
+                document.querySelector('#aboutLink').textContent = '关于';
+                document.querySelector('#about h2').textContent = '关于我们';
+                document.querySelector('#about p:nth-of-type(1)').textContent = 'rasvision是一个位于中国广东的技术社区，致力于使用树莓派进行图像识别项目的开发。';
+                document.querySelector('#about p:nth-of-type(2)').textContent = '我们的团队专注于探索计算机视觉技术，并通过实际项目帮助成员掌握相关技能。';
+                document.querySelector('#about p:nth-of-type(3)').textContent = '我们相信通过动手实践和团队合作，可以让更多人了解和掌握前沿技术。';
+                document.querySelector('#backButton').textContent = '返回主页';
+                document.body.classList.remove('en-version');
+            }
+        });
+    </script>
 </body>
 </html>
