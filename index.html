@@ -314,12 +314,13 @@
         }
         
         footer {
-          background-color: rgba(18, 18, 23, 0.9);
+          background-color: transparent;
           color: var(--theme-ui-colors-white);
           padding-top: 3rem;
           padding-bottom: 3rem;
           text-align: center;
           backdrop-filter: blur(10px);
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         footer a {
@@ -356,6 +357,10 @@
         
         .en-version .hero p {
           font-size: 1.25rem;
+        }
+        
+        .en-version #aboutLink {
+          color: #000;
         }
         
         /* About page styles */
@@ -420,7 +425,7 @@
             <div class="container">
                 <div class="section-content text-center mb-4">
                     <h2>rasvision活动</h2>
-                    <p>每周三下午 4:00 - 6:00 在学校图书馆三楼计算机实验室举行</p>
+                    <p>在线视频会议</p>
                 </div>
                 
                 <div class="text-center">
@@ -438,8 +443,7 @@
                 </div>
             </div>
         </section>
-        
-        <div class="organizer">组织者: wenfeng110402</div>
+
     </main>
 
     <section id="about" class="section hidden">
@@ -486,18 +490,18 @@
                 document.querySelector('.hero h1').textContent = 'rasvision';
                 document.querySelector('.hero p').textContent = 'A community for teenage coding enthusiasts where you can learn, create, and share tech projects';
                 document.querySelector('.hero .btn').textContent = 'Join Us';
-                document.querySelector('h2:nth-of-type(1)').textContent = 'rasvision Activities';
-                document.querySelector('h2:nth-of-type(1) + p').textContent = 'Held every Wednesday from 4:00 PM to 6:00 PM in the 3rd floor computer lab of the school library';
+                document.querySelector('h2:nth-of-type(1)').textContent = 'rasvision活动';
+                document.querySelector('h2:nth-of-type(1) + p').textContent = '每周三下午 4:00 - 6:00 在学校图书馆三楼计算机实验室举行';
                 document.querySelector('h2:nth-of-type(2)').textContent = 'Become a rasvision Member';
                 document.querySelector('h2:nth-of-type(2) + p').textContent = 'Please contact the following email for more information';
                 document.querySelector('.email-link a').textContent = 'wenfeng110402@icloud.com';
-                document.querySelector('.organizer').textContent = 'Organizer: wenfeng110402';
                 document.querySelector('#aboutLink').textContent = 'About';
                 document.querySelector('#about h2').textContent = 'About Us';
-                document.querySelector('#about p:nth-of-type(1)').textContent = 'rasvision is a technical community based in Guangdong, China, dedicated to developing image recognition projects using Raspberry Pi.';
+                document.querySelector('#about p:nth-of-type(1)').textContent = 'rasvision is a technical community, dedicated to developing image recognition projects using Raspberry Pi.';
                 document.querySelector('#about p:nth-of-type(2)').textContent = 'Our team focuses on exploring computer vision technology and helping members master relevant skills through practical projects.';
                 document.querySelector('#about p:nth-of-type(3)').textContent = 'We believe that hands-on practice and teamwork can help more people understand and master cutting-edge technologies.';
                 document.querySelector('#backButton').textContent = 'Back to Home';
+                document.querySelector('footer p').innerHTML = '&copy; 2025 rasvision. In cooperation with <a href="https://hackclub.com" target="_blank">Hack Club</a>.';
                 document.body.classList.add('en-version');
             } else {
                 // Switch to Chinese version
@@ -511,13 +515,13 @@
                 document.querySelector('h2:nth-of-type(2)').textContent = '成为rasvision成员';
                 document.querySelector('h2:nth-of-type(2) + p').textContent = '请联系以下邮箱获取更多信息';
                 document.querySelector('.email-link a').textContent = 'wenfeng110402@icloud.com';
-                document.querySelector('.organizer').textContent = '组织者: wenfeng110402';
                 document.querySelector('#aboutLink').textContent = '关于';
                 document.querySelector('#about h2').textContent = '关于我们';
-                document.querySelector('#about p:nth-of-type(1)').textContent = 'rasvision是一个位于中国广东的技术社区，致力于使用树莓派进行图像识别项目的开发。';
+                document.querySelector('#about p:nth-of-type(1)').textContent = 'rasvision是一个技术社区，致力于使用树莓派进行图像识别项目的开发。';
                 document.querySelector('#about p:nth-of-type(2)').textContent = '我们的团队专注于探索计算机视觉技术，并通过实际项目帮助成员掌握相关技能。';
                 document.querySelector('#about p:nth-of-type(3)').textContent = '我们相信通过动手实践和团队合作，可以让更多人了解和掌握前沿技术。';
                 document.querySelector('#backButton').textContent = '返回主页';
+                document.querySelector('footer p').innerHTML = '&copy; 2025 rasvision. 与 <a href="https://hackclub.com" target="_blank">Hack Club</a> 合作.';
                 document.body.classList.remove('en-version');
             }
         });
