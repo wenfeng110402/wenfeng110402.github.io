@@ -36,7 +36,23 @@
     </div>
     
     <footer class="bg-gray-200 text-gray-200 text-center p-6">
-      <p>Made by Cret</p>
+      <script>
+        const currentYear = new Date().getFullYear();
+        const ghRepo = "wenfeng110402.github.io";
+        const ghUser = "wenfeng110402";
+        
+        fetch(`https://api.github.com/repos/${ghUser}/${ghRepo}/commits/main`)
+      .then(response => response.json())
+      .then(data => {
+        const commitId = data.sha.substring(0, 7); // 取前7位短 CommitID
+        document.getElementById('footerInfo').innerText = 
+          `Made by Cret ${currentYear} | Commit: ${commitId}`;
+      })
+      .catch(error => {
+        // 失败时
+        document.getElementById('footerInfo').innerText = `Made by 叶文峰 © ${currentYear}`;
+      });
+  </script>
     </footer>
   </body>
 </html>
