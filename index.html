@@ -35,24 +35,25 @@
       <a href="https://flavortown.hackclub.com/?ref=site-0" target="_blank" rel="noreferrer" class="inline-block bg-zinc-700 hover:bg-zinc-600 text-white font-bold py-3 px-6 rounded-lg transition border border-zinc-600">JOIN NOW</a>
     </div>
     
-    <footer class="bg-gray-200 text-gray-200 text-center p-6">
-      <script>
-        const currentYear = new Date().getFullYear();
-        const ghRepo = "wenfeng110402.github.io";
-        const ghUser = "wenfeng110402";
-        
-        fetch(`https://api.github.com/repos/${ghUser}/${ghRepo}/commits/main`)
+    <footer class="bg-zinc-900 text-gray-700 text-center p-6">
+  <p id="footerInfo"></p>
+
+  <script>
+    const currentYear = new Date().getFullYear();
+    const ghRepo = "wenfeng110402.github.io";
+    const ghUser = "wenfeng110402";
+    
+    fetch(`https://api.github.com/repos/${ghUser}/${ghRepo}/commits/main`)
       .then(response => response.json())
       .then(data => {
-        const commitId = data.sha.substring(0, 7); // 取前7位短 CommitID
+        const commitId = data.sha.substring(0, 7);
         document.getElementById('footerInfo').innerText = 
-          `Made by Cret ${currentYear} | Commit: ${commitId}`;
+          `Made by Cret ${currentYear} | Commit: ${commitId}`; // 修正名字拼写
       })
       .catch(error => {
-        // 失败时
         document.getElementById('footerInfo').innerText = `Made by 叶文峰 © ${currentYear}`;
       });
   </script>
-    </footer>
+</footer>
   </body>
 </html>
