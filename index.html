@@ -48,7 +48,7 @@
       .then(data => {
         const commitId = data.sha.substring(0, 7);
         document.getElementById('footerInfo').innerText = 
-          `Made by Cret ${currentYear} | Commit: ${commitId}`; // 修正名字拼写
+          `Made by Cret in ${currentYear} | Commit: ${commitId}`; // 修正名字拼写
       })
       .catch(error => {
         document.getElementById('footerInfo').innerText = `Made by 叶文峰 © ${currentYear}`;
