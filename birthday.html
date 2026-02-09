@@ -19,7 +19,7 @@
             .fade-in {
                 opacity: 0;
                 transform: translateY(20px);
-                transition: opacity 0.6s ease, transform 0.6s ease;
+                transition: opacity 1s ease, transform 1s ease;
 
             }
             .fade-in.visible {
@@ -44,40 +44,108 @@
     </nav>
     <section class="snap-section bg-zinc-900">
         <div class="text-center">
-            <div class="text-6xl mb-4">🎉</div>
+            <a class="text-6xl mb-4">🎉</a>
             <h1 class="text-8xl font-bold text-white mb-8">Happy Birthday!</h1>
             <button id="celebrate-bt" class="bg-blue-500 text-white px-8 py-4 rounded-full text-xl hover:bg-blue-700 transition">Celebrate!</button>
         </div>
     </section>
 
-    <section class="snap-section bg-zinc-900 text-white relative">
-    <h2 class="absolute top-20 left-4 text-4xl font-bold font-sans">Review My 2025</h2>
+    <section class="snap-section bg-zinc-900 text-white relative opacity-0 translate-y-8 transition-all duration-1000" id="review-section">
+    <h2 class="absolute top-20 left-4 text-4xl font-bold font-sans opacity-0 transition-opacity duration-1000" id="review-title">Review My 2025</h2>
     <div class="flex justify-center items-center h-full w-full">
-        <div class="grid grid-cols-2 gap-8">
-            <div class="fade-in bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 shadow-lg">
+        <div class="grid grid-cols-2 gap-12">
+            <div class="fade-in bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20 rounded-lg p-12 shadow-lg hover:shadow-2xl transition">
                 <!-- 内容1 -->
-                <p>内容1</p>
+                <img src="https://assets.hackclub.com/icon-rounded.svg" class="mb-6 w-16 h-16"></img>
+                <h3 class="text-2xl font-bold mb-3">Join the HackClub</h3>
+                <p class="text-gray-300 text-lg">10/1/2025</p>
             </div>
-            <div class="fade-in bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20 rounded-lg p-6 shadow-lg">
+            <div class="fade-in bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20 rounded-lg p-12 shadow-lg hover:shadow-2xl transition">
                 <!-- 内容2 -->
-                <p>内容2</p>
+                <div class="text-6xl mb-6">💻</div>
+                <h3 class="text-2xl font-bold mb-3">First HTML Project</h3>
+                <p class="text-gray-300 text-lg">10/3/2025</p>
+            </div>
+            <div class="fade-in bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20 rounded-lg p-12 shadow-lg hover:shadow-2xl transition">
+                <!-- 内容3 -->
+                <div class="text-6xl mb-6">📚</div>
+                <h3 class="text-2xl font-bold mb-3">Start Grade 9</h3>
+                <p class="text-gray-300 text-lg">9/1/2025</p>
+            </div>
+            <div class="fade-in bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20 rounded-lg p-12 shadow-lg hover:shadow-2xl transition">
+                <!-- 内容4 -->
+                <div class="text-6xl mb-6">🐍</div>
+                <h3 class="text-2xl font-bold mb-3">Begin My First Python Project(HUGE)</h3>
+                <p class="text-gray-300 text-lg">8/3/2025</p>
+            </div>
+            <div class="fade-in bg-white bg-opacity-10 backdrop-blur-md border border-white border-opacity-20 rounded-lg p-12 shadow-lg hover:shadow-2xl transition flex flex-col items-center justify-center col-span-2">
+                <!-- 内容5 -->
+                <img src="https://github.githubassets.com/assets/starstruck-default-b6610abad518.png" width="120" alt="Achievement: Starstruck" class="mb-6">
+                <h3 class="text-2xl font-bold mb-3">Starstruck Achievement</h3>
+                <p class="text-gray-300 text-lg">Reach To 200 Stars</p>
             </div>
         </div>
     </div>
 </section>
 
+    <section class="snap-section bg-zinc-900 text-white">
+        <div class="text-center">
+            <h2 class="text-5xl font-bold mb-8 opacity-0 transition-opacity duration-1000" id="wishes-title">Wishing You An Amazing Year Ahead!</h2>
+            <p class="text-2xl mb-8 opacity-0 transition-opacity duration-1000" id="wishes-text">May your journey be filled with growth, joy, and endless possibilities.</p>
+            <p class="text-xl text-gray-400 opacity-0 transition-opacity duration-1000" id="wishes-text2">Keep coding, keep creating, and keep being awesome! 🚀</p>
+        </div>
+    </section>
+
 <script>
     document.getElementById('celebrate-bt').addEventListener('click', function() {
         const nextSection = document.querySelectorAll('.snap-section')[1];
-        nextSection.scrollIntoView({ behavior: 'smooth' });
         
-       
+        // 显示第二页
+        nextSection.classList.remove('opacity-0');
+        nextSection.classList.remove('translate-y-8');
+        nextSection.classList.add('opacity-1');
+        nextSection.classList.add('translate-y-0');
+        
+        setTimeout(() => {
+            nextSection.scrollIntoView({ behavior: 'smooth' });
+        }, 300);
+        
+        // 显示标题
+        const reviewTitle = nextSection.querySelector('#review-title');
+        setTimeout(() => {
+            reviewTitle.classList.remove('opacity-0');
+            reviewTitle.classList.add('opacity-1');
+        }, 600);
+        
+        // 显示卡片
         const fadeIns = nextSection.querySelectorAll('.fade-in');
         fadeIns.forEach((el, index) => {
             setTimeout(() => {
                 el.classList.add('visible');
-            }, index * 500); 
+            }, index * 800 + 600); 
         });
+        
+        // 第二页完全显示后，显示第三页
+        const totalDelay = fadeIns.length * 800 + 600 + 800; // 最后一个卡片显示完的时间
+        setTimeout(() => {
+            const wishesSection = document.querySelectorAll('.snap-section')[2];
+            wishesSection.scrollIntoView({ behavior: 'smooth' });
+            
+            setTimeout(() => {
+                document.getElementById('wishes-title').classList.remove('opacity-0');
+                document.getElementById('wishes-title').classList.add('opacity-1');
+            }, 500);
+            
+            setTimeout(() => {
+                document.getElementById('wishes-text').classList.remove('opacity-0');
+                document.getElementById('wishes-text').classList.add('opacity-1');
+            }, 1300);
+            
+            setTimeout(() => {
+                document.getElementById('wishes-text2').classList.remove('opacity-0');
+                document.getElementById('wishes-text2').classList.add('opacity-1');
+            }, 2100);
+        }, totalDelay);
     });
 </script>
 </body>
